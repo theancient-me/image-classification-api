@@ -1,6 +1,7 @@
 # util
 import shutil
 import datetime
+import os
 
 # fastapi
 from fastapi import FastAPI, File, UploadFile
@@ -29,4 +30,20 @@ async def image(image: UploadFile = File(...)):
         shutil.copyfileobj(image.file, buffer)
 
     return {"filename": image.filename}
+
+
+@app.get("/store/list")
+async def getlistImage():
+    folder = 'store'
+    list_img = [];
+    for filename in os.listdir(folder):
+        list_img.append(filename)
+
+    return {
+        'status' : 200,
+        'message' : 'OK',
+        'data' : list_img
+    }
+
+
 

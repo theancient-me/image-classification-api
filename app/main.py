@@ -1,15 +1,32 @@
-from typing import Optional
+# util
+import shutil
+import datetime
 
-from fastapi import FastAPI
+# fastapi
+from fastapi import FastAPI, File, UploadFile
+from fastapi.responses import HTMLResponse
+
 
 app = FastAPI()
 
 
 @app.get("/")
-def read_root():
-    return {"Hello": "World"}
+def root_welcome():
+    return {
+        "status": 200,
+        "message": "OK"
+    }
 
+@app.post("/image")
+async def image(image: UploadFile = File(...)):
+    time_now = str(datetime.datetime.now().timestamp())
+    ftime  = time_now.split('.')
+    
+    print(type(time_now))
+    
+    # Writ file into disk
+    with open("store/img-"+ftime[0]+".png", "wb") as buffer:
+        shutil.copyfileobj(image.file, buffer)
 
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Optional[str] = None):
-    return {"item_id": item_id, "q": q}
+    return {"filename": image.filename}
+

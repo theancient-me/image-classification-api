@@ -6,6 +6,7 @@ from PIL import Image
 from io import BytesIO
 import numpy as np
 
+
 app = FastAPI()
 model = PredictImage("./app/my_model.h5")
 
@@ -21,7 +22,7 @@ async def create_file(file: bytes = File(...)):
     val_predict = int(model.predict(image))
     return {"Predict": val_predict}
 
-# for mockup
+# for mockup get file
 @app.get("/")
 async def main():
     content = """

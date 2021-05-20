@@ -1,5 +1,6 @@
 from typing import Optional
 from app.mnist import PredictImage
+from app.pokemon import PokemonClassification
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import HTMLResponse
 from PIL import Image
@@ -9,6 +10,19 @@ import numpy as np
 
 app = FastAPI()
 model = PredictImage("./app/my_model.h5")
+pokemon_model = PokemonClassification("./app/pokemon_model.h5")
+
+@app.post("/predict-pokemon")
+async def create_file(file: bytes = File(...)):
+    stream = BytesIO(file)
+    image = np.array(Image.open(stream))
+    stream.close()
+    print("----------------------------")
+    print(type(image))
+    print(image.shape)
+    print(pokemon_model.predict(image))
+    val_predict = pokemon_model.predict(image)
+    return {"Predict": val_predict}
 
 @app.post("/files")
 async def create_file(file: bytes = File(...)):

@@ -14,11 +14,16 @@ class PokemonClassification:
     # img = tf.expand_dims(img, 0)
     img = cv2.resize(img, (300,300), interpolation = cv2.INTER_AREA)
     # img = img / 255.0 #Normalize to 0-1
-    img = img.reshape(300,300,1)
+    # img = img.reshape(300,300,1)
+    img = tf.expand_dims(img, 0) 
+    # print('GG')
     return img
 
   def predict(self,img):
+    # print(1)
     img = self.preprocessImage(img)
+    # print('test EIEI')
     predictions = self.model.predict(img)
-    print(np.argmax(predictions[0]))
+    # print('check')
+    # print(np.argmax(predictions[0]))
     return self.classes[np.argmax(predictions[0])]

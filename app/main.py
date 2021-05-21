@@ -10,7 +10,7 @@ import numpy as np
 
 app = FastAPI()
 model = PredictImage("./app/my_model.h5")
-pokemon_model = PokemonClassification("./app/pokemon_model.h5")
+pokemon_model = PokemonClassification("./app/pokemon1.h5")
 
 @app.post("/predict-pokemon")
 async def create_file(file: bytes = File(...)):

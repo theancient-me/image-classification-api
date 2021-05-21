@@ -15,15 +15,15 @@ $ . env/bin/activate
 $ pip3 install - r app/requirements.txt
 ````
 ## Run
+Run with environment
 ````
-# Run with environment
-$ ./env/bin/uvicorn app.main:app --reload
-# Normal Run
-$ uvicorn app.main:app --reload
+./env/bin/uvicorn app.main:app --reload
 ````
-
+Normal Run
+````
+uvicorn app.main:app --reload
+````
 ## Deploy Project with Docker
-````
 Build Image
 $ docker build -t myimage .
 Run Container

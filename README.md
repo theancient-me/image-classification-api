@@ -12,7 +12,7 @@ $ pip install 'uvicorn[standard]'
 ````
 $ python3 -m venv env
 $ . env/bin/activate
-$ pip3 install - r app/requirements.txt
+$ pip3 install -r app/requirements.txt
 ````
 ## Run
 Run with environment

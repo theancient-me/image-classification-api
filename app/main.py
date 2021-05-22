@@ -1,5 +1,4 @@
 from typing import Optional
-from app.mnist import PredictImage
 from app.pokemon import PokemonClassification
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import HTMLResponse
@@ -11,7 +10,6 @@ import cv2 #lib for read image
 import os
 
 app = FastAPI()
-model = PredictImage("./app/my_model.h5")
 pokemon_model = PokemonClassification("./app/pokemon1.h5")
 
 @app.post("/predict-pokemon")

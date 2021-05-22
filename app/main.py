@@ -5,7 +5,6 @@ from fastapi.responses import HTMLResponse
 from PIL import Image
 from io import BytesIO
 import numpy as np
-import tensorflow as tf
 import cv2 #lib for read image
 import os
 

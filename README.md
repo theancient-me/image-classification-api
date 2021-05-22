@@ -1,7 +1,7 @@
 # Pokemon Classification
 โปรแกรม Pokemon Classification เป็นเว็บแอปพลิเคชันที่จำลองเครื่อง Pokedex ซึ่งเป็นเครื่องที่ช่วยบอกข้อมูลเกี่ยวกับโปเกมอนเนื่องจากโปเกมอนมีมากถึง 898 สายพันธุ์ ทำให้ยากต่อการจดจำว่าแต่ละสายพันธุ์ชื่ออะไร โปรแกรมนี้จะช่วยให้ผู้ใช้สามารถจำแนกประเภทข้อมูลภาพ (Image Classification) ของโปเกมอนว่าแต่ละภาพคือสายพันธุ์อะไร โดยใช้เทคโนโลยี Deep Learning ซึ่งเป็นส่วนหนึ่งของ Machine Learning มาเรียนรู้และจำแนกประเภทของโปเกมอน 150 สายพันธุ์
 
-ดาวน์โหลด Front-end ได้ที่ [image-classification-frontend](https://github.com/theancient-me/vue-object-detection)
+ดู Repository Front-end ได้ที่ [image-classification-frontend](https://github.com/theancient-me/vue-object-detection)
 
 ## Pre-requisites Install
 ````

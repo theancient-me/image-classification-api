@@ -8,6 +8,7 @@ from io import BytesIO
 import numpy as np
 import tensorflow as tf
 import cv2 #lib for read image
+import os
 
 app = FastAPI()
 model = PredictImage("./app/my_model.h5")
@@ -36,6 +37,7 @@ async def create_file(file: bytes = File(...)):
     # print(image.shape)
     print(pokemon_model.predict(sr_image))
     val_predict = pokemon_model.predict(sr_image)
+    os.remove('test_convert.jpg')
     return {"Predict": val_predict}
 
 @app.post("/files")

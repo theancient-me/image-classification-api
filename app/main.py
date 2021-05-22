@@ -2,6 +2,7 @@ from typing import Optional
 from app.mnist import PredictImage
 from app.pokemon import PokemonClassification
 from fastapi import FastAPI, File, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import HTMLResponse
 from PIL import Image
 from io import BytesIO
@@ -9,6 +10,18 @@ import numpy as np
 
 
 app = FastAPI()
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 model = PredictImage("./app/my_model.h5")
 pokemon_model = PokemonClassification("./app/pokemon1.h5")
 

@@ -12,7 +12,16 @@ class PokemonClassification:
     # img = tf.keras.preprocessing.image.load_img(img, target_size=(180, 180))
     # img = tf.keras.preprocessing.image.img_to_array(img)
     # img = tf.expand_dims(img, 0)
+    img = img[:,:,::-1]
+    print('1')
+    print(img.shape)
     img = cv2.resize(img, (300,300), interpolation = cv2.INTER_AREA)
+    print('2')
+    print(img.shape)
+    # img = img.reshape(-1,300,300,3)
+    print('3')
+    print(img.shape)
+    # img.shape
     # img = img / 255.0 #Normalize to 0-1
     # img = img.reshape(300,300,1)
     img = tf.expand_dims(img, 0) 
@@ -22,7 +31,8 @@ class PokemonClassification:
   def predict(self,img):
     # print(1)
     img = self.preprocessImage(img)
-    # print('test EIEI')
+    print('test')
+    print(img.shape)
     predictions = self.model.predict(img)
     # print('check')
     # print(np.argmax(predictions[0]))

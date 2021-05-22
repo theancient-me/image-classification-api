@@ -16,15 +16,10 @@ async def create_file(file: bytes = File(...)):
     stream = BytesIO(file)
     image = Image.open(stream)
     image = image.convert('RGB')
-
     image.save('input_img.jpg')
-
     sr_image = cv2.imread('input_img.jpg', cv2.IMREAD_COLOR)
-
     stream.close()
-
     val_predict = pokemon_model.predict(sr_image)
-
     os.remove('input_img.jpg')
 
     return {"Predict": val_predict}

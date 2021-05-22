@@ -11,7 +11,7 @@ class PokemonClassification:
   def preprocessImage(self,img):
     img = img[:,:,::-1]
     img = cv2.resize(img, (300,300), interpolation = cv2.INTER_AREA)
-    img = tf.expand_dims(img, 0) 
+    img = tf.expand_dims(img, 0)
     return img
 
   def predict(self,img):
